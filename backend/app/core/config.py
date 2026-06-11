@@ -38,7 +38,7 @@ class Settings(BaseSettings):
     SLACK_ENABLED: bool = False
 
     # CORS
-    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001"]
+    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001", "https://agentguard-frontend-twgytbijtq-uc.a.run.app", "https://agentguard-frontend-42730801065.us-central1.run.app"]
 
     # Celery
     CELERY_BROKER_URL: str = "redis://localhost:6379/1"

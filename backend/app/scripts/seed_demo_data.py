@@ -346,12 +346,22 @@ async def seed_recent_activity(db: AsyncSession):
 
 
 async def main():
-    async with engine.begin() as conn:
+    from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+    from sqlalchemy.pool import NullPool
+    from app.core.config import settings
+
+    print(f"Connecting to database with NullPool...")
+    local_engine = create_async_engine(settings.DATABASE_URL, poolclass=NullPool)
+    LocalSession = async_sessionmaker(local_engine, class_=AsyncSession, expire_on_commit=False)
+
+    async with local_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    async with AsyncSessionLocal() as db:
+    
+    async with LocalSession() as db:
         await seed(db)
         await seed_recent_activity(db)
-
+    
+    await local_engine.dispose()
 
 if __name__ == "__main__":
     asyncio.run(main())
