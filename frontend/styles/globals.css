@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #0d0d0d;
+  color: #ffffff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+/* ── Cards ── */
+.card {
+  background: #18191b;
+  border-radius: 28px;
+  border: none;
+}
+.card-raised {
+  background: #202224;
+  border-radius: 24px;
+  border: none;
+}
+
+/* ── Pill nav (top) ── */
+.pill-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pill-nav-item {
+  background: #18191b;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a1a1aa;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.pill-nav-item:hover { color: #fff; background: #202224; }
+.pill-nav-item.active { background: #272a2d; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+
+/* ── Icon sidebar buttons ── */
+.icon-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #18191b;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: #71717a;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 18px;
+}
+.icon-btn:hover { background: #202224; color: #fff; }
+.icon-btn.active { background: #272a2d; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+
+/* ── Status dot ── */
+.dot-healthy { width: 7px; height: 7px; border-radius: 50%; background: #a8e63d; animation: pulse2 2s ease-in-out infinite; }
+.dot-warning { width: 7px; height: 7px; border-radius: 50%; background: #f97316; animation: pulse2 2s ease-in-out infinite; }
+.dot-danger { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; animation: pulse2 2s ease-in-out infinite; }
+
+/* ── Recharts overrides ── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line { stroke: rgba(255,255,255,0.04) !important; }
+.recharts-tooltip-wrapper { outline: none !important; }
+
+/* ── Progress bar ── */
+.progress-track { height: 3px; background: #2a2a2a; border-radius: 2px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+
+/* ── Glow ── */
+.glow-lime { box-shadow: 0 0 16px rgba(168,230,61,0.3); }
+.glow-orange { box-shadow: 0 0 16px rgba(249,115,22,0.3); }
+
+/* ── Filter dropdown ── */
+.filter-pill {
+  background: #18191b;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #a1a1aa;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.filter-pill:hover { background: #202224; color: #fff; }
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 2px 8px; border-radius: 999px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.02em;
+}
+.badge-healthy { background: rgba(168,230,61,0.12); color: #a8e63d; border: 1px solid rgba(168,230,61,0.2); }
+.badge-warning { background: rgba(249,115,22,0.12); color: #f97316; border: 1px solid rgba(249,115,22,0.2); }
+.badge-danger { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.badge-neutral { background: rgba(255,255,255,0.06); color: #a1a1aa; border: 1px solid rgba(255,255,255,0.08); }
+
+@keyframes pulse2 {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
